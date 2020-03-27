@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h1>{{ title }}</h1>
+
+	{% for a in blog_list %}
+		{% include 'blog/list-inline.html' with blog_post=a truncate=True detail=False %}
+	{% endfor %}
+	{% if messages %}
+		<ul class="messages">
+   			{% for message in messages %}
+    			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    		{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}
